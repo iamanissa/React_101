@@ -17,18 +17,67 @@
     <div id="root"></div>
 
     <script type="text/babel">
-      let robot = "🤖";
-      let cowboy = "🤠";
-      let moon = "🌝";
-      let name = "React";
+      function Header(props) {
+        console.log(props)
+        return(
+          <header>
+            <h1>{props.name}'s Kitchen</h1>
+          </header>
+        )
+      }
+
+      function Main(props) {
+        return(
+          <section>
+            <p>We serve the most {props.adjective} food around.</p>
+            <img height={200}
+            src="./restaurant.jpg"
+            alt="A chef makes fancy meal on wood plates"/>
+            <ul>
+              {props.dishes.map((dish)=>(
+                <li key={dish.id}>{dish.title}</li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      function Footer(props) {
+        return(
+          <footer>
+            <p>Copyright {props.year}.</p>
+          </footer>
+        )
+      }
+
+      const dishes = [
+        "Black Bean Soup",
+        "Mac and Cheese",
+        "Loaded Baked Potato",
+        "Chocolate Fountain Cake"
+      ];
+
+      const dishObjects = dishes.map(
+          (dish, i) => ({
+            id: i,
+            title: dish
+          })
+        );
+
+      function App() {
+        return(
+          <React.Fragment>
+            <Header name="Anissa"/>
+            <Main 
+              adjective="amazing"
+              dishes={dishObjects}
+            />
+            <Footer year={new Date().getFullYear()}/>
+          </React.Fragment>
+        )
+      }
       ReactDOM.render(
-        <ul>
-          <li>{robot}</li>
-          <li>{cowboy}</li>
-          <li>{moon}</li>
-          <li>{name.toUpperCase()}</li>
-          <li>{name.length}</li>
-        </ul>,
+        <App />,
         document.getElementById("root")
       );
     </script>
