@@ -1,31 +1,31 @@
 import "./App.css";
 
-function Home() {
+function Home(){
   return (
     <div>
-      <h1>My Website</h1>
+      <h1>My website</h1>
     </div>
-  );
+  )
 }
 
-function About() {
+export function About(){
   return (
     <div>
       <h1>About Us</h1>
     </div>
-  );
+  )
 }
 
-function Contact() {
+export function Contact(){
   return (
     <div>
       <h1>Contact Us</h1>
     </div>
+  )
+}
+
+export function App() {
+  return (
+    <Home />
   );
 }
-
-function App() {
-  return <Home />;
-}
-
-export default App;
